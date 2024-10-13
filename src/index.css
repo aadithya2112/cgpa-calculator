@@ -1,0 +1,99 @@
+:root {
+  --color-dark-background: #222831; /* Dark Background */
+  --color-dark-grey: #393E46;       /* Dark Grey */
+  --color-primary-blue: #00ADB5;    /* Teal */
+  --color-light-grey: #EEEEEE;      /* Light Grey */
+}
+
+/* Example usage */
+body {
+  background-color: var(--color-dark-background);
+  color: var(--color-light-grey);
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  margin: 0; /* Remove default margin */
+  overflow: hidden; /* Prevent scrollbar */
+}
+
+#root {
+  margin-left: auto;
+  margin-right: auto;
+  flex: 1; /* Allow #root to grow and take available space */
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center;
+}
+
+h1 {
+  color: var(--color-primary-blue);
+}
+
+button {
+  background-color: var(--color-dark-grey);
+  color: var(--color-light-grey); /* Adjust text color for better contrast */
+  border: none; /* Optional: remove border for a cleaner look */
+  padding: 10px 20px; /* Optional: add padding for better button appearance */
+  cursor: pointer; /* Optional: change cursor on hover */
+  margin: 10px; /* Optional: add margin for spacing */
+}
+
+button:hover {
+  background-color: var(--color-primary-blue); /* Change background color on hover */
+}
+
+table {
+  background-color: var(--color-dark-background); /* Table background */
+  color: var(--color-light-grey); /* Text color for tables */
+  border-collapse: collapse; /* Optional: collapse borders */
+}
+
+table th,
+table td {
+  padding: 10px; /* Optional: add padding to table cells */
+  border: 1px solid var(--color-dark-grey); /* Optional: border color for table cells */
+}
+
+input {
+  background-color: var(--color-dark-grey);
+  color: var(--color-light-grey);
+  border: none;
+  padding: 10px;
+  margin: 10px;
+}
+
+input:focus {
+  outline: none; /* Optional: remove focus outline */
+}
+
+select {
+  background-color: var(--color-dark-grey);
+  color: var(--color-light-grey);
+  border: none;
+  padding: 10px;
+  margin: 10px;
+}
+
+select:focus {
+  outline: none; /* Optional: remove focus outline */
+}
+
+footer {
+  background-color: var(--color-dark-grey);
+  color: var(--color-light-grey);
+  padding: 10px;
+  position: relative; /* Changed from absolute to relative */
+  bottom: 0;
+  margin-top: auto; /* Push footer to the bottom */
+  width: 100%; /* Ensure footer takes full width */
+}
+
+footer a {
+  color: var(--color-primary-blue);
+  text-decoration: none;
+}
+
+/* Add any other styles as needed */
