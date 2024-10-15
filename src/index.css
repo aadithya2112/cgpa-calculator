@@ -220,6 +220,14 @@ footer a:hover {
     min-width: 300px;
   }
 
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
   .add-calc-div {
     flex-direction: column;
     gap: 10px;
