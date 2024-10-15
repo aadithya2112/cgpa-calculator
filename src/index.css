@@ -1,99 +1,231 @@
 :root {
-  --color-dark-background: #222831; /* Dark Background */
-  --color-dark-grey: #393E46;       /* Dark Grey */
-  --color-primary-blue: #00ADB5;    /* Teal */
-  --color-light-grey: #EEEEEE;      /* Light Grey */
+  --bg-color: #f0f2f5;
+  --main-bg-color: #ffffff;
+  --table-bg-color: #e9ecef;
+  --header-bg-color: #1f2d3d;
+  --text-color: #333;
+  --text-light-color: #fff;
+  --input-bg-color: #f8f9fa;
+  --input-border-color: #ced4da;
+  --button-bg-color: #1d476c;
+  --button-hover-bg-color: #4d6983;
+  --footer-link-color: #007bff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Example usage */
-body {
-  background-color: var(--color-dark-background);
-  color: var(--color-light-grey);
-  min-height: 100vh;
-  min-width: 100vw;
-  display: flex;
-  flex-direction: column; /* Align items vertically */
-  margin: 0; /* Remove default margin */
-  overflow: hidden; /* Prevent scrollbar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #root {
-  margin-left: auto;
-  margin-right: auto;
-  flex: 1; /* Allow #root to grow and take available space */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
-  flex-direction: column; /* Align items vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: var(--header-bg-color);
+  color: var(--text-light-color);
   text-align: center;
+  padding: 20px 0;
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 h1 {
-  color: var(--color-primary-blue);
+  margin: 0;
+  font-size: 2em;
+  font-weight: 600;
 }
 
-button {
-  background-color: var(--color-dark-grey);
-  color: var(--color-light-grey); /* Adjust text color for better contrast */
-  border: none; /* Optional: remove border for a cleaner look */
-  padding: 10px 20px; /* Optional: add padding for better button appearance */
-  cursor: pointer; /* Optional: change cursor on hover */
-  margin: 10px; /* Optional: add margin for spacing */
+#gpa-progress {
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 500px;
+  background-color: var(--main-bg-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  text-align: center;
 }
 
-button:hover {
-  background-color: var(--color-primary-blue); /* Change background color on hover */
+#gpa-progress div {
+  min-width: 400px;
+}
+
+#gpa-progress h2 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: var(--text-color);
+}
+
+#gpa-progress progress {
+  width: 100%;
+  height: 20px;
+  appearance: none;
+  background-color: var(--input-bg-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px var(--shadow-color);
+}
+
+#gpa-progress progress::-webkit-progress-bar {
+  background-color: var(--input-bg-color);
+  border-radius: 10px;
+}
+
+#gpa-progress progress::-webkit-progress-value {
+  background-color: var(--button-bg-color);
+  border-radius: 10px 0 0 10px;
+}
+
+#gpa-progress progress::-moz-progress-bar {
+  background-color: var(--button-bg-color);
+  border-radius: 10px 0 0 10px;
+}
+
+main {
+  padding: 30px;
+  max-width: 800px;
+  margin: auto;
+  background-color: var(--main-bg-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  border-radius: 12px;
 }
 
 table {
-  background-color: var(--color-dark-background); /* Table background */
-  color: var(--color-light-grey); /* Text color for tables */
-  border-collapse: collapse; /* Optional: collapse borders */
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: var(--table-bg-color);
 }
 
-table th,
-table td {
-  padding: 10px; /* Optional: add padding to table cells */
-  border: 1px solid var(--color-dark-grey); /* Optional: border color for table cells */
+thead {
+  background-color: var(--table-bg-color); /* Matching the table rows */
 }
 
-input {
-  background-color: var(--color-dark-grey);
-  color: var(--color-light-grey);
-  border: none;
-  padding: 10px;
-  margin: 10px;
+thead td {
+  font-weight: bold;
+  padding: 15px;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-input:focus {
-  outline: none; /* Optional: remove focus outline */
+
+tbody td {
+  padding: 12px;
+  color: var(--text-color);
+}
+
+tbody tr {
+  background-color: var(--main-bg-color); /* Slight alternation for every other row */
+}
+
+
+
+
+
+input[type="number"] {
+  width: 100px;
+  padding: 8px;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+  border-color: var(--button-bg-color);
 }
 
 select {
-  background-color: var(--color-dark-grey);
-  color: var(--color-light-grey);
-  border: none;
-  padding: 10px;
-  margin: 10px;
+  width: 100%;
+  padding: 8px;
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
 select:focus {
-  outline: none; /* Optional: remove focus outline */
+  border-color: var(--button-bg-color);
+}
+
+button {
+  background-color: var(--button-bg-color);
+  color: var(--text-light-color);
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: var(--button-hover-bg-color);
+  transform: translateY(-2px);
+}
+
+.add-calc-div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.add-calc-div button {
+  flex: 1;
+  padding: 12px;
 }
 
 footer {
-  background-color: var(--color-dark-grey);
-  color: var(--color-light-grey);
-  padding: 10px;
-  position: relative; /* Changed from absolute to relative */
-  bottom: 0;
-  margin-top: auto; /* Push footer to the bottom */
-  width: 100%; /* Ensure footer takes full width */
+  text-align: center;
+  background-color: var(--header-bg-color);
+  color: var(--text-light-color);
+  padding: 10px 0;
+  margin-top: auto;
 }
 
 footer a {
-  color: var(--color-primary-blue);
+  color: var(--footer-link-color);
   text-decoration: none;
 }
 
-/* Add any other styles as needed */
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* in mobile */
+@media (max-width: 600px) {
+  
+  #gpa-progress div {
+    min-width: 300px;
+  }
+
+  .add-calc-div {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-calc-div button {
+    padding: 10px;
+  }
+}

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from "uuid"; // Import uuid
+import { v4 as uuidv4 } from "uuid";
 import TableInput from "./TableInput";
 import calculateGpa from "../utils/calculateGpa";
 
-function MarkInputTable() {
+function MarkInputTable({ setGpa }) {
+  // Accept setGpa as prop
   const [inputArray, setInputArray] = useState([
     { id: uuidv4(), credits: "", grade: "O" },
     { id: uuidv4(), credits: "", grade: "O" },
@@ -12,12 +13,9 @@ function MarkInputTable() {
     { id: uuidv4(), credits: "", grade: "O" },
   ]);
 
-  const [gpa, setGpa] = useState(0);
-
   function handleCreditsChange(index, newCredits) {
-    // Update credits without changing to integer until submission
     const updatedInputArray = [...inputArray];
-    updatedInputArray[index].credits = newCredits; // Keep as string
+    updatedInputArray[index].credits = newCredits;
     setInputArray(updatedInputArray);
   }
 
@@ -31,8 +29,8 @@ function MarkInputTable() {
     setInputArray([
       ...inputArray,
       {
-        id: uuidv4(), // Generate a new unique id for each course
-        credits: "", // Start with an empty string for credits
+        id: uuidv4(),
+        credits: "",
         grade: "O",
       },
     ]);
@@ -44,15 +42,13 @@ function MarkInputTable() {
   }
 
   function handleSubmit() {
-    // Convert credits to integers for GPA calculation
     const gpa = calculateGpa(
       inputArray.map((item) => ({
-        credits: parseInt(item.credits, 10) || 0, // Convert to integer for calculation
+        credits: parseInt(item.credits, 10) || 0,
         grade: item.grade,
       }))
     );
-    console.log("GPA:", gpa);
-    setGpa(gpa);
+    setGpa(gpa); // Update GPA in the parent component
   }
 
   return (
@@ -60,7 +56,7 @@ function MarkInputTable() {
       <table>
         <thead>
           <tr>
-            <td>Course #</td>
+            <td>No</td>
             <td>Credits</td>
             <td>Grade</td>
           </tr>
@@ -68,8 +64,8 @@ function MarkInputTable() {
         <tbody>
           {inputArray.map((input, index) => (
             <TableInput
-              key={input.id} // Use the `uuid` as the key
-              courseNumber={index + 1} // Ensure the course number is always in sequence
+              key={input.id}
+              courseNumber={index + 1}
               credits={input.credits}
               grade={input.grade}
               handleCreditsChange={(newCredits) =>
@@ -83,17 +79,11 @@ function MarkInputTable() {
           ))}
         </tbody>
       </table>
-      <button onClick={handleAddCourse}>Add course</button>
-      <br />
-      <button onClick={handleSubmit}>Submit</button>
 
-      {/* conditional render gpa with progress bar*/}
-      {gpa > 0 && (
-        <div>
-          <h2>GPA: {gpa}</h2>
-          <progress max="10" value={gpa}></progress>
-        </div>
-      )}
+      <div className="add-calc-div">
+        <button onClick={handleAddCourse}>Add course</button>
+        <button onClick={handleSubmit}>Calculate</button>
+      </div>
     </>
   );
 }
