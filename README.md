@@ -2,6 +2,7 @@
 
 This is a simple web application to calculate the GPA for students based on their course credits and grades. It allows users to input multiple courses, calculate the GPA, and view the progress of their GPA.
 It's built using **React** and styled using **CSS**.
+[**Live Demo**](https://cgpa-calculator-ebon.vercel.app/)
 
 ## Features
 
